@@ -1,0 +1,43 @@
+<template>
+    <lightning-card title="All Posts" icon-name="custom:custom14">
+        <ul class="slds-var-m-around_medium">
+            
+            <!-- <div class="exampleHolder" if:true={loading}>
+                <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+            </div> -->
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <button class="slds-button slds-button_brand" onclick={handleClickPrevious}>Previous</button>
+                    <lightning-button variant="brand" label="Previous" title="Previous Page" onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+                </div>
+                <div class="slds-col">
+                     <div class="slds-text-body_regular">Total Post: {posts.length}</div>
+                     <div class="slds-text-body_regular">Current view: {initialPosition} - {lastIndexView} </div>
+                </div>
+                <div class="slds-col">
+                    <button class="slds-button slds-button_brand" onclick={handleClickNext}>Next</button>
+                    <lightning-button variant="brand" label="Next" title="Next page" onclick={handleClick} class="slds-var-m-left_x-small"></lightning-button>
+                </div>
+              </div>
+            <template for:each={postTrunks} for:item="postTrunk" if:false={loading}>
+                <!-- <li  style="width: 25%; max-width: 25%;" > -->
+                    <div key={postTrunk.Id} class="slds-grid slds-gutters">
+                        <div class="slds-grid slds-gutters slds-p-around_x-small">
+                            <div class="slds-col ">
+                                <img src={postTrunk.Thumbnail__c} alt={postTrunk.Title__c}>
+                            </div>
+                            <div class="slds-col slds-text-align_left">
+                                <div class="slds-text-heading_small"><strong>Title: </strong> {postTrunk.Title__c}</div> 
+                                <div class="slds-text-heading_small"><strong>Author:</strong> {postTrunk.Author__c}</div>
+                                <div class="slds-text-heading_small"><strong>SelfText:</strong> {postTrunk.Self_text__c}</div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- </li> -->
+            </template>
+            <template if:true={error}>
+                {error}
+            </template>
+        </ul>
+    </lightning-card>
+</template>
